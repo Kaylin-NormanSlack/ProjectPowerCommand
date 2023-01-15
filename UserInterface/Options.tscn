@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwj51v8qc38g1"]
+
+[ext_resource type="Script" path="res://UserInterface/InGameOptions.gd" id="1_ftjvd"]
+
+[sub_resource type="Theme" id="Theme_kg7lu"]
+
+[node name="OptionsMenu" type="CanvasLayer"]
+script = ExtResource("1_ftjvd")
+Main_Menu = "res://UserInterface/MainMenu.tscn"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -264.0
+offset_right = 266.0
+offset_bottom = 137.0
+grow_horizontal = 2
+theme = SubResource("Theme_kg7lu")
+theme_override_font_sizes/normal_font_size = 100
+text = "Options"
+fit_content_height = true
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 260.0
+offset_right = 150.0
+offset_bottom = 486.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+offset_right = 300.0
+offset_bottom = 108.0
+size_flags_vertical = 3
+text = "Continue
+
+"
+
+[node name="BackToStart" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 118.0
+offset_right = 300.0
+offset_bottom = 226.0
+size_flags_vertical = 3
+text = "Back To Start"
+
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackToStart" to="." method="_on_back_to_start_pressed"]

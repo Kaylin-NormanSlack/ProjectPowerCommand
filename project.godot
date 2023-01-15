@@ -8,12 +8,26 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "RefCounted",
+"class": &"ResourceAsyncLoader",
+"language": &"GDScript",
+"path": "res://ResourceAsyncLoader.gd"
+}]
+_global_script_class_icons={
+"ResourceAsyncLoader": ""
+}
+
 [application]
 
 config/name="Project Power Command"
-run/main_scene="res://Gameplay.tscn"
+run/main_scene="res://UserInterface/MainMenu.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Game="*res://Autoloads/Game.gd"
 
 [display]
 
