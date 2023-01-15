@@ -13,7 +13,8 @@ func _process(delta):
 
 
 func _on_continue_button_pressed():
-	set_process(false)
+	print("continue")
+	get_node(".").hide()
 
 
 
