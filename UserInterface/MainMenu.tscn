@@ -15,6 +15,7 @@ script = ExtResource("1_ad4oy")
 Next_Scene = "res://Gameplay.tscn"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -33,6 +34,7 @@ fit_content_height = true
 scroll_active = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -48,6 +50,7 @@ theme_override_constants/separation = 10
 alignment = 1
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 offset_right = 300.0
 offset_bottom = 68.0
 size_flags_vertical = 3
@@ -55,6 +58,7 @@ text = "Start
 "
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 offset_top = 78.0
 offset_right = 300.0
 offset_bottom = 147.0
@@ -62,6 +66,7 @@ size_flags_vertical = 3
 text = "Button Options"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 offset_top = 157.0
 offset_right = 300.0
 offset_bottom = 226.0
