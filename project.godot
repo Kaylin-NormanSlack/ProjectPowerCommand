@@ -9,12 +9,24 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Area3D",
+"class": &"Hitbox",
+"language": &"GDScript",
+"path": "res://Scripts/Hitbox.gd"
+}, {
+"base": "Area3D",
+"class": &"Hurtbox",
+"language": &"GDScript",
+"path": "res://Scripts/Hurtbox.gd"
+}, {
 "base": "RefCounted",
 "class": &"ResourceAsyncLoader",
 "language": &"GDScript",
 "path": "res://ResourceAsyncLoader.gd"
 }]
 _global_script_class_icons={
+"Hitbox": "",
+"Hurtbox": "",
 "ResourceAsyncLoader": ""
 }
 
