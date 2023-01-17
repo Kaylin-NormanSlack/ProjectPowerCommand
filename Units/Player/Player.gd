@@ -1,15 +1,36 @@
 extends CharacterBody3D
 
-@onready var camera = %Camera;
+enum CameraMode { FIRST_PERSON, THIRD_PERSON }
 
-const MOUSE_SENSITIVITY = 0.0025
+@onready var first_person_camera = %FirstPersonCamera;
+@onready var third_person_camera = %ThirdPersonCamera;
+
+var camera_mode: CameraMode = CameraMode.FIRST_PERSON
+
+func set_camera_mode(mode: CameraMode):
+	camera_mode = mode
+	match camera_mode:
+		CameraMode.FIRST_PERSON:
+			first_person_camera.current = true
+		CameraMode.THIRD_PERSON:
+			third_person_camera.current = true
+
+var camera: Camera3D:
+	get:
+		match camera_mode:
+			CameraMode.FIRST_PERSON:
+				return first_person_camera
+			CameraMode.THIRD_PERSON:
+				return third_person_camera
+			_:
+				return null
+
+const MOUSE_SENSITIVITY := Vector2(0.0025, 0.0025)
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-var rotating: bool = false
 
 func _ready():
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -38,9 +59,16 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _unhandled_input(event):
-	if event.is_action_pressed("rotate_camera"):
-		rotating = true
-	elif event.is_action_released("rotate_camera"):
-		rotating = false
-	elif event is InputEventMouseMotion and rotating:
-		rotate_y(-(event as InputEventMouseMotion).relative.x * MOUSE_SENSITIVITY)
+	if event is InputEventMouseMotion:
+		var motion := event as InputEventMouseMotion
+		match camera_mode:
+			CameraMode.FIRST_PERSON:
+				rotation = Vector3(rotation.x - motion.relative.y * MOUSE_SENSITIVITY.y, rotation.y - motion.relative.x * MOUSE_SENSITIVITY.x, rotation.z)
+			
+			CameraMode.THIRD_PERSON:
+				rotate_y(-motion.relative.x * MOUSE_SENSITIVITY.x)
+
+	elif event.is_action_pressed("switch_camera"):
+		match camera_mode:
+			CameraMode.FIRST_PERSON: set_camera_mode(CameraMode.THIRD_PERSON)
+			CameraMode.THIRD_PERSON: set_camera_mode(CameraMode.FIRST_PERSON)
