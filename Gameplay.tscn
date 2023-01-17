@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxfpex0ydv3aa"]
+[gd_scene load_steps=9 format=3 uid="uid://dxfpex0ydv3aa"]
 
 [ext_resource type="PackedScene" uid="uid://ufq1edu4opmr" path="res://Environment/Box.tscn" id="1_hgilq"]
 [ext_resource type="PackedScene" uid="uid://sehq4ogge7br" path="res://Units/Player/Player.tscn" id="1_ksyta"]
+[ext_resource type="PackedScene" uid="uid://bqsupjxduc30x" path="res://Environment/Fort.tscn" id="2_b4iyb"]
 [ext_resource type="Script" path="res://InGameInterface.gd" id="3_h0d5v"]
 [ext_resource type="PackedScene" uid="uid://dwj51v8qc38g1" path="res://UserInterface/Options.tscn" id="3_vkyse"]
 
@@ -35,6 +36,18 @@ shape = SubResource("BoxShape3D_b85ab")
 
 [node name="StaticBody3D2" parent="Environment" instance=ExtResource("1_hgilq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07324, 0, 10.8231)
+
+[node name="Fort" parent="Environment" instance=ExtResource("2_b4iyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.5753, 0, 71.853)
+
+[node name="Fort2" parent="Environment" instance=ExtResource("2_b4iyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.0948, 0, 70.7554)
+
+[node name="Fort3" parent="Environment" instance=ExtResource("2_b4iyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.243, 0, -62.2848)
+
+[node name="Fort4" parent="Environment" instance=ExtResource("2_b4iyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.2664, 0, -58.2748)
 
 [node name="Player" parent="." instance=ExtResource("1_ksyta")]
 
