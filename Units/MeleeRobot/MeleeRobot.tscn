@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bggyx6ji0laf5"]
+
+[ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="1_40i3q"]
+[ext_resource type="Script" path="res://Units/MeleeRobot/MeleeRobot.gd" id="1_of8jo"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rgnxw"]
+radius = 0.35
+height = 1.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7jr0o"]
+radius = 0.35
+height = 1.5
+
+[node name="MeleeRobot" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 7
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_of8jo")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-12)
+mesh = SubResource("CapsuleMesh_rgnxw")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-12)
+visible = false
+shape = SubResource("CapsuleShape3D_7jr0o")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_40i3q")
+
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-12)
+shape = SubResource("CapsuleShape3D_7jr0o")
+
+[node name="NavigationAgent" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
+avoidance_enabled = true
+
+[connection signal="damaged" from="Hurtbox" to="." method="_damaged"]

@@ -23,11 +23,17 @@ _global_script_classes=[{
 "class": &"ResourceAsyncLoader",
 "language": &"GDScript",
 "path": "res://ResourceAsyncLoader.gd"
+}, {
+"base": "CharacterBody3D",
+"class": &"Unit",
+"language": &"GDScript",
+"path": "res://Units/Unit.gd"
 }]
 _global_script_class_icons={
 "Hitbox": "",
 "Hurtbox": "",
-"ResourceAsyncLoader": ""
+"ResourceAsyncLoader": "",
+"Unit": ""
 }
 
 [application]

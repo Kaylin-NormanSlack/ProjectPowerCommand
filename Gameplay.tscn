@@ -65,3 +65,5 @@ script = ExtResource("3_h0d5v")
 
 [node name="OptionsMenu" parent="InGameInterface" instance=ExtResource("3_vkyse")]
 visible = false
+
+[node name="Units" type="Node3D" parent="."]
