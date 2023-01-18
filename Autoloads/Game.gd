@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 
 signal NewGame		#You choose how to use it
@@ -11,12 +11,18 @@ var NextScene
 
 var loader: = ResourceAsyncLoader.new()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("Exit",Callable(self,"on_Exit"))
 	connect("ChangeScene",Callable(self,"on_ChangeScene"))
 	connect("Restart",Callable(self,"restart_scene"))
 	pass
+
+func add_player_character(id=1):
+	var character = preload("res://Units/Player/Player.tscn").instantiate()
+	character.name = str(id)
+	add_child(character)
+
+# Called when the node enters the scene tree for the first time.
 
 
 # we can add fade effects to this code later!

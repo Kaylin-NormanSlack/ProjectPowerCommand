@@ -1,9 +1,11 @@
 extends CharacterBody3D
+class_name Player
 
 @export var faction: Resource:
 	set(value):
 		faction = value
 		FactionUtils.apply_faction_colors(value, self)
+
 
 enum CameraMode { FIRST_PERSON, THIRD_PERSON }
 
@@ -41,12 +43,27 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+
 func _ready():
 	# Load commander of proper faction
 	if faction:
 		FactionUtils.apply_faction_colors(faction, self)
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	$Networking/MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
+	$Camera3D.current = is_local_authority()
+
+func is_local_authority() -> bool:
+	return $Networking/MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id()
 
 func _physics_process(delta):
+	if !is_local_authority():
+		if not $Networking.processed_position:
+			position = $Networking.sync_position
+			$Networking.processed_position = true
+			move_and_slide()
+			return
+			
+			
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -69,6 +86,9 @@ func _physics_process(delta):
 	interaction_marker.visible = Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and is_interaction_available()
 
 	move_and_slide()
+	$Networking.sync_position = position
+
+
 
 func _input(event):
 	if !Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
