@@ -1,9 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxfpex0ydv3aa"]
+[gd_scene load_steps=5 format=3 uid="uid://dxfpex0ydv3aa"]
 
 [ext_resource type="PackedScene" uid="uid://ufq1edu4opmr" path="res://Environment/Box.tscn" id="1_hgilq"]
-[ext_resource type="PackedScene" uid="uid://sehq4ogge7br" path="res://Units/Player/Player.tscn" id="1_ksyta"]
-[ext_resource type="Script" path="res://InGameInterface.gd" id="3_h0d5v"]
-[ext_resource type="PackedScene" uid="uid://dwj51v8qc38g1" path="res://UserInterface/Options.tscn" id="3_vkyse"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi476"]
 albedo_color = Color(0.486275, 0.486275, 0.486275, 1)
@@ -14,7 +11,7 @@ size = Vector2(200, 200)
 [sub_resource type="BoxShape3D" id="BoxShape3D_b85ab"]
 size = Vector3(200, 2, 200)
 
-[node name="Root" type="Node3D"]
+[node name="Level" type="Node3D"]
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -36,18 +33,32 @@ shape = SubResource("BoxShape3D_b85ab")
 [node name="StaticBody3D2" parent="Environment" instance=ExtResource("1_hgilq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07324, 0, 10.8231)
 
-[node name="Player" parent="." instance=ExtResource("1_ksyta")]
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.823513, -0.359561, 0.438797, 1.08803e-16, 0.773486, 0.633813, -0.567298, -0.521953, 0.636976, 2.08165e-12, 15, 2.08165e-12)
 light_energy = 0.539
 shadow_enabled = true
 
-[node name="InGameInterface" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
+[node name="ConnectMenu" type="VBoxContainer" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("3_h0d5v")
 
-[node name="OptionsMenu" parent="InGameInterface" instance=ExtResource("3_vkyse")]
+[node name="Port" type="LineEdit" parent="ConnectMenu"]
+offset_right = 67.0
+offset_bottom = 31.0
+text = "9999"
+
+[node name="Join" type="Button" parent="ConnectMenu"]
+offset_top = 35.0
+offset_right = 67.0
+offset_bottom = 66.0
+text = "Join"
+
+[node name="Host" type="Button" parent="ConnectMenu"]
+offset_top = 70.0
+offset_right = 67.0
+offset_bottom = 101.0
+text = "Host"
+
+[connection signal="pressed" from="ConnectMenu/Join" to="ConnectMenu" method="_on_join_pressed"]
+[connection signal="pressed" from="ConnectMenu/Host" to="ConnectMenu" method="_on_host_pressed"]

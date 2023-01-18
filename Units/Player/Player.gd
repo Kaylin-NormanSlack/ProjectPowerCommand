@@ -1,6 +1,5 @@
 extends CharacterBody3D
-
-@onready var camera = %Camera;
+class_name Player
 
 const MOUSE_SENSITIVITY = 0.0025
 const SPEED = 5.0
@@ -9,13 +8,24 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var rotating: bool = false
 
 func _ready():
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	pass
+	$Networking/MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
+	$Camera3D.current = is_local_authority()
+
+func is_local_authority() -> bool:
+	return $Networking/MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id()
 
 func _physics_process(delta):
+	if !is_local_authority():
+		if not $Networking.processed_position:
+			position = $Networking.sync_position
+			$Networking.processed_position = true
+			move_and_slide()
+			return
+			
+			
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -34,13 +44,9 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
 	move_and_slide()
+	$Networking.sync_position = position
 
-func _unhandled_input(event):
-	if event.is_action_pressed("rotate_camera"):
-		rotating = true
-	elif event.is_action_released("rotate_camera"):
-		rotating = false
-	elif event is InputEventMouseMotion and rotating:
-		rotate_y(-(event as InputEventMouseMotion).relative.x * MOUSE_SENSITIVITY)
+
+
