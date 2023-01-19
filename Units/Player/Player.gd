@@ -33,7 +33,6 @@ const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	pass
 
 func _physics_process(delta):
@@ -59,6 +58,9 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _unhandled_input(event):
+	if !Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		return
+	
 	if event is InputEventMouseMotion:
 		var motion := event as InputEventMouseMotion
 		match camera_mode:

@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxfpex0ydv3aa"]
+[gd_scene load_steps=10 format=3 uid="uid://d5qjpaliyn6j"]
 
+[ext_resource type="Script" path="res://Gameplay.gd" id="1_d1v7m"]
 [ext_resource type="PackedScene" uid="uid://ufq1edu4opmr" path="res://Environment/Box.tscn" id="1_hgilq"]
 [ext_resource type="PackedScene" uid="uid://sehq4ogge7br" path="res://Units/Player/Player.tscn" id="1_ksyta"]
 [ext_resource type="PackedScene" uid="uid://bqsupjxduc30x" path="res://Environment/Fort.tscn" id="2_b4iyb"]
@@ -16,6 +17,7 @@ size = Vector2(200, 200)
 size = Vector3(200, 2, 200)
 
 [node name="Root" type="Node3D"]
+script = ExtResource("1_d1v7m")
 
 [node name="Environment" type="Node3D" parent="."]
 

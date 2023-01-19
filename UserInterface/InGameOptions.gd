@@ -15,6 +15,7 @@ func _process(delta):
 func _on_continue_button_pressed():
 	print("continue")
 	get_node(".").hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 
