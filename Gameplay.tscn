@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://ufq1edu4opmr" path="res://Environment/Box.tscn" id="1_hgilq"]
 [ext_resource type="PackedScene" uid="uid://sehq4ogge7br" path="res://Units/Player/Player.tscn" id="1_ksyta"]
 [ext_resource type="PackedScene" uid="uid://bqsupjxduc30x" path="res://Environment/Fort.tscn" id="2_b4iyb"]
-[ext_resource type="Script" path="res://InGameInterface.gd" id="3_h0d5v"]
 [ext_resource type="PackedScene" uid="uid://dwj51v8qc38g1" path="res://UserInterface/Options.tscn" id="3_vkyse"]
+[ext_resource type="Script" path="res://UserInterface/InGameInterface.gd" id="5_d1m5v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi476"]
 albedo_color = Color(0.486275, 0.486275, 0.486275, 1)
@@ -61,7 +61,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("3_h0d5v")
+script = ExtResource("5_d1m5v")
 
 [node name="OptionsMenu" parent="InGameInterface" instance=ExtResource("3_vkyse")]
 visible = false
