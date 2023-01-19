@@ -9,6 +9,9 @@ enum CameraMode { FIRST_PERSON, THIRD_PERSON }
 @onready var first_person_camera = %FirstPersonCamera;
 @onready var third_person_camera = %ThirdPersonCamera;
 
+@onready var interactor := %Interactor as RayCast3D
+@onready var interaction_marker: Control = %InteractionMarker as Control
+
 var camera_mode: CameraMode = CameraMode.FIRST_PERSON
 
 func set_camera_mode(mode: CameraMode):
@@ -61,6 +64,8 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+	interaction_marker.visible = Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and is_interaction_available()
 
 	move_and_slide()
 
@@ -82,3 +87,15 @@ func _unhandled_input(event):
 				set_camera_mode(CameraMode.FIRST_PERSON)
 				# Reset camera pitch after switching back to first person
 				first_person_camera.rotation.x = 0.0
+	elif event.is_action_pressed("interact") and is_interaction_available():
+		interact()
+
+func is_interaction_available() -> bool:
+	return interactor.is_colliding()
+
+func interact():
+	var interactable = interactor.get_collider() as Interactable
+	if !interactable:
+		return
+	
+	interactable.interact()

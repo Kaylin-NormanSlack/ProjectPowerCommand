@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb57g0xho7c5t"]
+[gd_scene load_steps=6 format=3 uid="uid://bb57g0xho7c5t"]
 
 [ext_resource type="Script" path="res://Units/Player/Player.gd" id="1_0hdoe"]
 [ext_resource type="PackedScene" uid="uid://e4w873cvy2d" path="res://Units/Player/commander.tscn" id="2_pdday"]
@@ -8,6 +8,9 @@ height = 1.8
 
 [sub_resource type="Environment" id="Environment_5btf0"]
 ambient_light_color = Color(0.498039, 0.498039, 0.498039, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rba3d"]
+font_size = 50
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 collision_layer = 2
@@ -26,6 +29,14 @@ transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-
 cull_mask = 1048571
 environment = SubResource("Environment_5btf0")
 
+[node name="Interactor" type="RayCast3D" parent="FirstPersonCamera"]
+unique_name_in_owner = true
+exclude_parent = false
+target_position = Vector3(2.08165e-12, 2.08165e-12, -2)
+collision_mask = 8
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="ThirdPersonCamera" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, -4.3906e-16, 3.36902e-16, 3.36902e-16, 0.965926, 0.258819, -4.3906e-16, -0.258819, 0.965926, 2.08165e-12, 7, 9)
@@ -34,3 +45,19 @@ environment = SubResource("Environment_5btf0")
 
 [node name="Commander" parent="." instance=ExtResource("2_pdday")]
 unique_name_in_owner = true
+
+[node name="InteractionMarker" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="InteractionMarker"]
+layout_mode = 2
+text = "Press E to interact"
+label_settings = SubResource("LabelSettings_rba3d")
+horizontal_alignment = 1
+vertical_alignment = 1
