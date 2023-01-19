@@ -33,6 +33,9 @@ shape = SubResource("BoxShape3D_b85ab")
 [node name="StaticBody3D2" parent="Environment" instance=ExtResource("1_hgilq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07324, 0, 10.8231)
 
+[node name="Camera3d" type="Camera3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 0.773165, 0.634204, 0, -0.634204, 0.773165, 0, 33.8763, 50.1832)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.823513, -0.359561, 0.438797, 1.08803e-16, 0.773486, 0.633813, -0.567298, -0.521953, 0.636976, 2.08165e-12, 15, 2.08165e-12)
 light_energy = 0.539
@@ -44,17 +47,20 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Port" type="LineEdit" parent="ConnectMenu"]
+layout_mode = 2
 offset_right = 67.0
 offset_bottom = 31.0
 text = "9999"
 
 [node name="Join" type="Button" parent="ConnectMenu"]
+layout_mode = 2
 offset_top = 35.0
 offset_right = 67.0
 offset_bottom = 66.0
 text = "Join"
 
 [node name="Host" type="Button" parent="ConnectMenu"]
+layout_mode = 2
 offset_top = 70.0
 offset_right = 67.0
 offset_bottom = 101.0
