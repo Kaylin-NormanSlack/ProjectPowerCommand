@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3oqvq8bggd1"]
+
+[ext_resource type="PackedScene" uid="uid://e4w873cvy2d" path="res://Units/Player/commander.tscn" id="1_o7mme"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pl6en"]
+albedo_color = Color(0, 0.635294, 0.909804, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0gqw"]
+albedo_color = Color(0.6, 0.85098, 0.917647, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gn8y"]
+albedo_color = Color(0.764706, 0.764706, 0.764706, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bve4l"]
+albedo_color = Color(0.247059, 0.282353, 0.8, 1)
+
+[node name="Echelon_Industries_Commander" instance=ExtResource("1_o7mme")]
+
+[node name="Commander" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pl6en")
+surface_material_override/1 = SubResource("StandardMaterial3D_i0gqw")
+surface_material_override/2 = SubResource("StandardMaterial3D_1gn8y")
+surface_material_override/3 = SubResource("StandardMaterial3D_bve4l")

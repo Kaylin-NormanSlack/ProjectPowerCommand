@@ -1,7 +1,11 @@
 extends CharacterBody3D
 
+@export_enum("D3lt4 Arm", "Echelon Industries", "Fenrir Enterprise", "Mach Co") var faction: int = 0
+const FACTION_CODES: Array[String] = ["d4", "ei", "fe", "mc"]
+
 enum CameraMode { FIRST_PERSON, THIRD_PERSON }
 
+@onready var commander: Node3D = %Commander
 @onready var first_person_camera = %FirstPersonCamera;
 @onready var third_person_camera = %ThirdPersonCamera;
 
@@ -33,7 +37,10 @@ const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	pass
+	# Load commander of proper faction
+	commander.queue_free()
+	commander = load("res://Units/Player/%s_commander.tscn" % FACTION_CODES[faction]).instantiate()
+	add_child(commander)
 
 func _physics_process(delta):
 	# Add the gravity.
