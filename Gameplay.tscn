@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://d5qjpaliyn6j"]
+[gd_scene load_steps=11 format=3 uid="uid://bn6yco1d0ucdi"]
 
 [ext_resource type="Script" path="res://Gameplay.gd" id="1_d1v7m"]
 [ext_resource type="PackedScene" uid="uid://ufq1edu4opmr" path="res://Environment/Box.tscn" id="1_hgilq"]
 [ext_resource type="PackedScene" uid="uid://bb57g0xho7c5t" path="res://Units/Player/Player.tscn" id="1_ksyta"]
 [ext_resource type="PackedScene" uid="uid://bqsupjxduc30x" path="res://Environment/Fort.tscn" id="2_b4iyb"]
 [ext_resource type="PackedScene" uid="uid://dwj51v8qc38g1" path="res://UserInterface/Options.tscn" id="3_vkyse"]
+[ext_resource type="PackedScene" uid="uid://citb6n5t4qy2d" path="res://Environment/BuildStation/BuildStation.tscn" id="4_7b5pa"]
 [ext_resource type="Script" path="res://UserInterface/InGameInterface.gd" id="5_d1m5v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi476"]
@@ -50,6 +51,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.243, 0, -62.2848)
 
 [node name="Fort4" parent="Environment" instance=ExtResource("2_b4iyb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.2664, 0, -58.2748)
+
+[node name="BuildStation" parent="Environment" instance=ExtResource("4_7b5pa")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.410347, 0, -13.7984)
 
 [node name="Player" parent="." instance=ExtResource("1_ksyta")]
 faction = 1

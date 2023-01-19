@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://citb6n5t4qy2d"]
+
+[ext_resource type="PackedScene" uid="uid://1a1hob85f45c" path="res://Models/build_station.glb" id="1_ria42"]
+[ext_resource type="Script" path="res://Environment/BuildStation/BuildStation.gd" id="2_rkscp"]
+[ext_resource type="Script" path="res://Scripts/Interactable.gd" id="3_ro4if"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a33ta"]
+size = Vector3(1.47042, 0.154216, 2.65987)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_esiqh"]
+height = 0.315078
+radius = 0.941972
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p1fvg"]
+height = 0.302193
+radius = 1.45273
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qc75a"]
+height = 2.65655
+radius = 1.5
+
+[node name="BuildStation" instance=ExtResource("1_ria42")]
+script = ExtResource("2_rkscp")
+
+[node name="Energy Cover" parent="." index="1"]
+unique_name_in_owner = true
+visible = false
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(-0.0407109, -0.382312, 0.0168629, 0.922982)
+bones/2/rotation = Quaternion(-4.22757e-08, 7.45058e-09, -7.64304e-09, 1)
+bones/4/rotation = Quaternion(5.33418e-09, -7.45058e-09, 2.11643e-09, 1)
+bones/6/rotation = Quaternion(-0.0453175, 2.38207e-07, 7.16728e-08, 0.998973)
+bones/7/rotation = Quaternion(1.47834e-08, 1.70533e-13, 6.30383e-14, 1)
+bones/8/rotation = Quaternion(-1.10897e-08, 5.68454e-14, 1.48896e-14, 1)
+bones/9/rotation = Quaternion(3.97924e-13, 5.68458e-14, 6.74916e-18, 1)
+bones/11/rotation = Quaternion(-0.0407111, -0.382312, 0.016863, 0.922982)
+bones/12/rotation = Quaternion(-1.7745e-08, 3.45156e-16, 1.29817e-08, 1)
+bones/13/rotation = Quaternion(-1.64655e-08, 3.72529e-08, 9.41112e-09, 1)
+bones/14/rotation = Quaternion(5.3299e-09, -7.35796e-17, 2.44724e-08, 1)
+bones/16/rotation = Quaternion(-0.0407111, 0.382312, -0.016863, 0.922982)
+bones/17/rotation = Quaternion(-1.7745e-08, -3.45156e-16, -1.29817e-08, 1)
+bones/18/rotation = Quaternion(-1.64655e-08, -3.72529e-08, -9.41112e-09, 1)
+bones/19/rotation = Quaternion(5.3299e-09, 7.35796e-17, -2.44724e-08, 1)
+bones/22/rotation = Quaternion(-0.0453144, 5.96474e-08, 1.86057e-08, 0.998973)
+bones/24/rotation = Quaternion(-1.55249e-08, 1.03684e-07, 1.96113e-14, 1)
+bones/25/rotation = Quaternion(-7.32569e-16, -7.38606e-16, 6.05274e-15, 1)
+bones/27/rotation = Quaternion(-0.0407109, 0.382312, -0.0168629, 0.922982)
+bones/28/rotation = Quaternion(-4.22757e-08, -7.45058e-09, 7.64304e-09, 1)
+bones/29/rotation = Quaternion(-2.74117e-08, -4.47035e-08, 1.99451e-09, 1)
+bones/30/rotation = Quaternion(5.33418e-09, 7.45058e-09, -2.11643e-09, 1)
+bones/32/rotation = Quaternion(-0.0453144, -5.96474e-08, -1.86057e-08, 0.998973)
+bones/34/rotation = Quaternion(-1.55249e-08, -1.03684e-07, -1.96113e-14, 1)
+bones/35/rotation = Quaternion(-7.32569e-16, 7.38606e-16, -6.05274e-15, 1)
+
+[node name="AnimationPlayer" parent="." index="3"]
+unique_name_in_owner = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="4"]
+
+[node name="Ramp" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.999986, -0.000777082, 0.00521327, 0.000102475, 0.991752, 0.128173, -0.00526987, -0.12817, 0.991738, 0.0216999, 0.0918643, -1.55038)
+shape = SubResource("BoxShape3D_a33ta")
+
+[node name="Center" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000620604, 0.18272, 0.326084)
+shape = SubResource("CylinderShape3D_esiqh")
+
+[node name="Outer Base" type="CollisionShape3D" parent="StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0194305, 0.0915469, -0.0276707)
+shape = SubResource("CylinderShape3D_p1fvg")
+
+[node name="Interactable" type="Area3D" parent="." index="5"]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_ro4if")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35707, 0)
+shape = SubResource("CylinderShape3D_qc75a")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interacted"]
