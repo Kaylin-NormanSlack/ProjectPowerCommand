@@ -63,14 +63,15 @@ func _unhandled_input(event):
 	
 	if event is InputEventMouseMotion:
 		var motion := event as InputEventMouseMotion
-		match camera_mode:
-			CameraMode.FIRST_PERSON:
-				rotation = Vector3(rotation.x - motion.relative.y * MOUSE_SENSITIVITY.y, rotation.y - motion.relative.x * MOUSE_SENSITIVITY.x, rotation.z)
-			
-			CameraMode.THIRD_PERSON:
-				rotate_y(-motion.relative.x * MOUSE_SENSITIVITY.x)
+		rotation.y = rotation.y - motion.relative.x * MOUSE_SENSITIVITY.x
+		
+		if camera_mode == CameraMode.FIRST_PERSON:
+			first_person_camera.rotation.x = clampf(first_person_camera.rotation.x - motion.relative.y * MOUSE_SENSITIVITY.y, -PI / 3, PI / 3)
 
 	elif event.is_action_pressed("switch_camera"):
 		match camera_mode:
 			CameraMode.FIRST_PERSON: set_camera_mode(CameraMode.THIRD_PERSON)
-			CameraMode.THIRD_PERSON: set_camera_mode(CameraMode.FIRST_PERSON)
+			CameraMode.THIRD_PERSON:
+				set_camera_mode(CameraMode.FIRST_PERSON)
+				# Reset camera pitch after switching back to first person
+				first_person_camera.rotation.x = 0.0
