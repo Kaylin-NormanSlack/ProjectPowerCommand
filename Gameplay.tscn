@@ -1,61 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn6yco1d0ucdi"]
+[gd_scene load_steps=7 format=3 uid="uid://bn6yco1d0ucdi"]
 
 [ext_resource type="Script" path="res://Gameplay.gd" id="1_d1v7m"]
-[ext_resource type="PackedScene" uid="uid://ufq1edu4opmr" path="res://Environment/Box.tscn" id="1_hgilq"]
 [ext_resource type="PackedScene" uid="uid://bb57g0xho7c5t" path="res://Units/Player/Player.tscn" id="1_ksyta"]
-[ext_resource type="PackedScene" uid="uid://bqsupjxduc30x" path="res://Environment/Fort.tscn" id="2_b4iyb"]
+[ext_resource type="PackedScene" uid="uid://m5c4xfc62ut7" path="res://Environment/Map.tscn" id="3_4iwbg"]
+[ext_resource type="PackedScene" uid="uid://f74tn565mt15" path="res://Environment/Base.tscn" id="3_ln0o4"]
 [ext_resource type="PackedScene" uid="uid://dwj51v8qc38g1" path="res://UserInterface/Options.tscn" id="3_vkyse"]
-[ext_resource type="PackedScene" uid="uid://citb6n5t4qy2d" path="res://Environment/BuildStation/BuildStation.tscn" id="4_7b5pa"]
 [ext_resource type="Script" path="res://UserInterface/InGameInterface.gd" id="5_d1m5v"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi476"]
-albedo_color = Color(0.486275, 0.486275, 0.486275, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_7c0fc"]
-size = Vector2(200, 200)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_b85ab"]
-size = Vector3(200, 2, 200)
 
 [node name="Root" type="Node3D"]
 script = ExtResource("1_d1v7m")
 
 [node name="Environment" type="Node3D" parent="."]
 
-[node name="Ground" type="StaticBody3D" parent="Environment"]
-collision_mask = 0
+[node name="Map" parent="Environment" instance=ExtResource("3_4iwbg")]
 
-[node name="Mesh" type="MeshInstance3D" parent="Environment/Ground"]
-material_override = SubResource("StandardMaterial3D_yi476")
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_7c0fc")
-skeleton = NodePath("../../..")
+[node name="Base1" parent="Environment" instance=ExtResource("3_ln0o4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.19826, -3, 228.477)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -1, 2.08165e-12)
-shape = SubResource("BoxShape3D_b85ab")
+[node name="Base4" parent="Environment" instance=ExtResource("3_ln0o4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -229.916, -3, 5.36235)
 
-[node name="StaticBody3D" parent="Environment" instance=ExtResource("1_hgilq")]
+[node name="Base2" parent="Environment" instance=ExtResource("3_ln0o4")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 225.991, -3, -0.655602)
 
-[node name="StaticBody3D2" parent="Environment" instance=ExtResource("1_hgilq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07324, 0, 10.8231)
-
-[node name="Fort" parent="Environment" instance=ExtResource("2_b4iyb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.5753, 0, 71.853)
-
-[node name="Fort2" parent="Environment" instance=ExtResource("2_b4iyb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.0948, 0, 70.7554)
-
-[node name="Fort3" parent="Environment" instance=ExtResource("2_b4iyb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.243, 0, -62.2848)
-
-[node name="Fort4" parent="Environment" instance=ExtResource("2_b4iyb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.2664, 0, -58.2748)
-
-[node name="BuildStation" parent="Environment" instance=ExtResource("4_7b5pa")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.410347, 0, -13.7984)
+[node name="Base3" parent="Environment" instance=ExtResource("3_ln0o4")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -2.25298, -3, -227.63)
 
 [node name="Player" parent="." instance=ExtResource("1_ksyta")]
+transform = Transform3D(0.217905, 0, 0.97597, 0, 1, 0, -0.97597, 0, 0.217905, 226.071, -2.20672, 7.85571)
 faction = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
