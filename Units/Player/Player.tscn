@@ -39,7 +39,7 @@ collide_with_bodies = false
 
 [node name="ThirdPersonCamera" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, -4.3906e-16, 3.36902e-16, 3.36902e-16, 0.965926, 0.258819, -4.3906e-16, -0.258819, 0.965926, 2.08165e-12, 7, 9)
+transform = Transform3D(1, -4.39059e-16, 3.36903e-16, 3.19571e-16, 0.955129, 0.296191, -4.51831e-16, -0.296191, 0.955129, 2.08165e-12, 2.60029, 2.23982)
 cull_mask = 1048573
 environment = SubResource("Environment_5btf0")
 
