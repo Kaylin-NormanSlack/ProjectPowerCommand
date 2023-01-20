@@ -9,6 +9,16 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Resource",
+"class": &"Faction",
+"language": &"GDScript",
+"path": "res://Scripts/Faction.gd"
+}, {
+"base": "RefCounted",
+"class": &"FactionUtils",
+"language": &"GDScript",
+"path": "res://Scripts/FactionUtils.gd"
+}, {
 "base": "Area3D",
 "class": &"Hitbox",
 "language": &"GDScript",
@@ -35,6 +45,8 @@ _global_script_classes=[{
 "path": "res://Units/Unit.gd"
 }]
 _global_script_class_icons={
+"Faction": "",
+"FactionUtils": "",
 "Hitbox": "",
 "Hurtbox": "",
 "Interactable": "",

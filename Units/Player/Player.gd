@@ -1,7 +1,9 @@
 extends CharacterBody3D
 
-@export_enum("D3lt4 Arm", "Echelon Industries", "Fenrir Enterprise", "Mach Co") var faction: int = 0
-const FACTION_CODES: Array[String] = ["d4", "ei", "fe", "mc"]
+@export var faction: Resource:
+	set(value):
+		faction = value
+		FactionUtils.apply_faction_colors(value, self)
 
 enum CameraMode { FIRST_PERSON, THIRD_PERSON }
 
@@ -41,9 +43,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	# Load commander of proper faction
-	commander.queue_free()
-	commander = load("res://Units/Player/%s_commander.tscn" % FACTION_CODES[faction]).instantiate()
-	add_child(commander)
+	if faction:
+		FactionUtils.apply_faction_colors(faction, self)
 
 func _physics_process(delta):
 	# Add the gravity.

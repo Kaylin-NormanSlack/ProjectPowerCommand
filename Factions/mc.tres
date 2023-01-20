@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cj4g38i5dlfjg"]
+
+[ext_resource type="Script" path="res://Scripts/Faction.gd" id="1_84psp"]
+
+[resource]
+script = ExtResource("1_84psp")
+title = "Mack Co"
+description = "Mack Co is a construction company that has recently begun transitioning to utilizing their robots in a combat environment. The commander is equipped with some kind of nail gun and construction hammer. The robots are equipped with weapons that are modified rivet guns and power tools. (Alternatively we could include mining gear and incorporate drills and tank treads into the robot designs."
+base_color = Color(1, 0.662745, 0.105882, 1)
+highlight_color = Color(1, 1, 0, 1)
+dark_color = Color(1, 0.364706, 0, 1)
+darkest_color = Color(0, 0, 0, 1)
