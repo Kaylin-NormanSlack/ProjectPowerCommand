@@ -1,7 +1,10 @@
+@tool
 extends Node3D
 
-@export var faction: Resource
+@export var faction: Resource:
+	set(value):
+		faction = value
+		FactionUtils.apply_faction_colors(faction, self)
 
 func _ready():
-	if faction:
-		FactionUtils.apply_faction_colors(faction, self)
+	FactionUtils.apply_faction_colors(faction, self)
