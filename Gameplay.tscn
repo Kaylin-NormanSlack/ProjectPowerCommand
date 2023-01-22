@@ -20,23 +20,23 @@ script = ExtResource("1_d1v7m")
 [node name="Map" parent="Environment" instance=ExtResource("3_4iwbg")]
 
 [node name="Base1" parent="Environment" instance=ExtResource("3_ln0o4")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.134495, -3, 149.134)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.08165e-12, -1.5, 155)
 faction = ExtResource("4_omtfh")
 
-[node name="Base4" parent="Environment" instance=ExtResource("3_ln0o4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.529, -3, -0.124385)
-faction = ExtResource("5_f4kt8")
-
 [node name="Base2" parent="Environment" instance=ExtResource("3_ln0o4")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 148.081, -3, -0.188561)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 156, -1.5, 2.08165e-12)
 faction = ExtResource("4_dt1bk")
 
 [node name="Base3" parent="Environment" instance=ExtResource("3_ln0o4")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -0.0582855, -3, -148.075)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2.08165e-12, -1.5, -156)
 faction = ExtResource("7_x01d6")
 
+[node name="Base4" parent="Environment" instance=ExtResource("3_ln0o4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156, -1.5, 2.08165e-12)
+faction = ExtResource("5_f4kt8")
+
 [node name="Player" parent="." instance=ExtResource("1_ksyta")]
-transform = Transform3D(0.217905, 0, 0.97597, 0, 1, 0, -0.97597, 0, 0.217905, 153.747, -1.56303, 4.09321)
+transform = Transform3D(0.217905, 0, 0.97597, 0, 1, 0, -0.97597, 0, 0.217905, 155.906, 1.72314, -0.231235)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.823513, -0.359561, 0.438797, 1.08803e-16, 0.773486, 0.633813, -0.567298, -0.521953, 0.636976, 2.08165e-12, 15, 2.08165e-12)
