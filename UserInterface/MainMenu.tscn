@@ -12,62 +12,62 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.262745, 0.34902, 0.631373)
 script = ExtResource("1_ad4oy")
-Next_Scene = "res://Gameplay.tscn"
+GameplayScene = "res://Gameplay.tscn"
+OptionsScene = "res://UserInterface/MainMenuOptions.tscn"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -272.0
-offset_top = -68.5
-offset_right = 272.0
-offset_bottom = 68.5
+offset_left = -380.0
+offset_top = -376.0
+offset_right = 444.0
+offset_bottom = -102.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_kg7lu")
 theme_override_font_sizes/normal_font_size = 100
-text = "Game Title"
+bbcode_enabled = true
+text = "[center]Power Commander[/center]"
 fit_content_height = true
 scroll_active = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = 260.0
-offset_right = 150.0
-offset_bottom = 486.0
+[node name="MainMenuBox" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 780.0
+offset_top = 630.0
+offset_right = 1183.0
+offset_bottom = 887.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
-offset_right = 300.0
-offset_bottom = 68.0
+[node name="StartButton" type="Button" parent="MainMenuBox"]
+layout_mode = 2
 size_flags_vertical = 3
 text = "Start
 "
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
-offset_top = 78.0
-offset_right = 300.0
-offset_bottom = 147.0
+[node name="OptionsButton" type="Button" parent="MainMenuBox"]
+layout_mode = 2
 size_flags_vertical = 3
-text = "Button Options"
+text = "Options"
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
-offset_top = 157.0
-offset_right = 300.0
-offset_bottom = 226.0
+[node name="ExitButton" type="Button" parent="MainMenuBox"]
+layout_mode = 2
 size_flags_vertical = 3
 text = "Exit"
 
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lr8ej")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="MainMenuBox/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenuBox/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuBox/ExitButton" to="." method="_on_exit_button_pressed"]

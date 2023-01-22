@@ -1,27 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwj51v8qc38g1"]
+[gd_scene load_steps=5 format=3 uid="uid://i3vl3xgmbejs"]
 
-[ext_resource type="Script" path="res://UserInterface/InGameOptions.gd" id="1_ftjvd"]
+[ext_resource type="Script" path="res://UserInterface/MainMenuOptions.gd" id="1_7b27e"]
 
 [sub_resource type="Theme" id="Theme_kg7lu"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_r33cq"]
+[sub_resource type="LabelSettings" id="LabelSettings_3nydg"]
 font_size = 36
 
-[sub_resource type="LabelSettings" id="LabelSettings_t8f77"]
+[sub_resource type="LabelSettings" id="LabelSettings_s7oyh"]
 font_size = 36
 
-[node name="OptionsMenu" type="CanvasLayer"]
-script = ExtResource("1_ftjvd")
-Main_Menu = "res://UserInterface/MainMenu.tscn"
+[node name="MainMenuOptions" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.262745, 0.34902, 0.631373)
+script = ExtResource("1_7b27e")
+MainMenu = "res://UserInterface/MainMenu.tscn"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-anchors_preset = 5
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -264.0
-offset_right = 266.0
-offset_bottom = 137.0
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = -329.0
+offset_right = 249.0
+offset_bottom = -192.0
 grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_kg7lu")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
@@ -30,15 +41,16 @@ fit_content_height = true
 scroll_active = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -168.0
-offset_top = -7.0
-offset_right = 132.0
-offset_bottom = 335.0
+offset_left = -167.0
+offset_top = -26.0
+offset_right = 133.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -47,7 +59,7 @@ alignment = 1
 [node name="MusicVolumeLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Music Volume"
-label_settings = SubResource("LabelSettings_r33cq")
+label_settings = SubResource("LabelSettings_3nydg")
 horizontal_alignment = 1
 
 [node name="MusicVolumeSlider" type="HSlider" parent="VBoxContainer"]
@@ -65,7 +77,7 @@ layout_mode = 2
 [node name="SoundVolumeLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Sound Volume"
-label_settings = SubResource("LabelSettings_t8f77")
+label_settings = SubResource("LabelSettings_s7oyh")
 horizontal_alignment = 1
 
 [node name="SoundVolumeSlider" type="HSlider" parent="VBoxContainer"]
@@ -77,19 +89,21 @@ rounded = true
 tick_count = 10
 ticks_on_borders = true
 
-[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-text = "Continue
+text = "
 
 "
 
-[node name="BackToStart" type="Button" parent="VBoxContainer"]
+[node name="BackButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-text = "Back To Start"
+text = "
+Back To Main Menu
+
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="value_changed" from="VBoxContainer/MusicVolumeSlider" to="." method="_on_music_volume_changed"]
 [connection signal="value_changed" from="VBoxContainer/SoundVolumeSlider" to="." method="_on_sound_volume_changed"]
-[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/BackToStart" to="." method="_on_back_to_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
