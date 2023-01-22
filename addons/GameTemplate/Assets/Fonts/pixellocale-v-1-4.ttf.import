@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c8tv6lfxr0s72"
-path="res://.godot/imported/pixellocale-v-1-4.ttf-cd4b5b38d2bfd03fb532f0d8694c5a56.fontdata"
+uid="uid://0wcaluyfmqhe"
+path="res://.godot/imported/pixellocale-v-1-4.ttf-92e19960de32a84c2a47d3771435717d.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/pixellocale-v-1-4.ttf"
-dest_files=["res://.godot/imported/pixellocale-v-1-4.ttf-cd4b5b38d2bfd03fb532f0d8694c5a56.fontdata"]
+source_file="res://addons/GameTemplate/Assets/Fonts/pixellocale-v-1-4.ttf"
+dest_files=["res://.godot/imported/pixellocale-v-1-4.ttf-92e19960de32a84c2a47d3771435717d.fontdata"]
 
 [params]
 

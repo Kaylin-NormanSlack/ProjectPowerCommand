@@ -31,6 +31,25 @@ run/main_scene="res://System/MainGame.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Lobby="*res://System/NetworkLobby.gd"
+Game="*res://addons/GameTemplate/Autoload/Game.gd"
+SettingsAudio="*res://addons/GameTemplate/Autoload/SettingsAudio.gd"
+Settings="*res://addons/GameTemplate/Autoload/Settings.gd"
+SettingsControls="*res://addons/GameTemplate/Autoload/SettingsControls.gd"
+SettingsLanguage="*res://addons/GameTemplate/Autoload/SettingsLanguage.gd"
+SettingsResolution="*res://addons/GameTemplate/Autoload/SettingsResolution.gd"
+SettingsSaveLoad="*res://addons/GameTemplate/Autoload/SettingsSaveLoad.gd"
+SfxManager="*res://addons/GameTemplate/Autoload/SfxManager.gd"
+MenuEvent="*res://addons/GameTemplate/Autoload/MenuEvent.gd"
+Options="*res://addons/GameTemplate/Autoload/Options.tscn"
+HtmlFocus="*res://addons/GameTemplate/Autoload/HtmlFocus.tscn"
+ScreenFade="*res://addons/GameTemplate/Autoload/ScreenFade.tscn"
+Music="*res://addons/GameTemplate/Autoload/Music.tscn"
+PauseMenu="*res://addons/GameTemplate/Autoload/PauseMenu.tscn"
+Hud="*res://addons/GameTemplate/Autoload/Hud.tscn"
+
 [display]
 
 window/size/viewport_width=1920
