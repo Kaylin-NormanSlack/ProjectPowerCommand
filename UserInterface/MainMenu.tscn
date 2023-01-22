@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7yu156e8bmkt"]
+[gd_scene load_steps=4 format=3 uid="uid://c7yu156e8bmkt"]
 
 [ext_resource type="Script" path="res://UserInterface/MainMenu.gd" id="1_ad4oy"]
+[ext_resource type="AudioStream" uid="uid://dmtvv5p8234fw" path="res://Music/Titlemenu.ogg" id="2_lr8ej"]
 
 [sub_resource type="Theme" id="Theme_kg7lu"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn6yco1d0ucdi"]
+[gd_scene load_steps=12 format=3 uid="uid://bn6yco1d0ucdi"]
 
 [ext_resource type="Script" path="res://Gameplay.gd" id="1_d1v7m"]
 [ext_resource type="PackedScene" uid="uid://bb57g0xho7c5t" path="res://Units/Player/Player.tscn" id="1_ksyta"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://UserInterface/InGameInterface.gd" id="5_d1m5v"]
 [ext_resource type="Resource" uid="uid://dpty6h8j5n5od" path="res://Factions/fe.tres" id="5_f4kt8"]
 [ext_resource type="Resource" uid="uid://btyvlub1myqq1" path="res://Factions/ei.tres" id="7_x01d6"]
+[ext_resource type="AudioStream" uid="uid://cclsdk7ni7rl2" path="res://Music/Gameplay.ogg" id="11_opc0s"]
 
 [node name="Root" type="Node3D"]
 script = ExtResource("1_d1v7m")
@@ -53,3 +54,8 @@ script = ExtResource("5_d1m5v")
 visible = false
 
 [node name="Units" type="Node3D" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_opc0s")
+autoplay = true
+bus = &"Music"
