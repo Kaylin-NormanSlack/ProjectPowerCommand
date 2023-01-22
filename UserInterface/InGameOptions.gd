@@ -16,8 +16,3 @@ func _on_continue_button_pressed():
 	print("continue")
 	get_node(".").hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-
-
-func _on_back_to_start_pressed():
-		Game.emit_signal("ChangeScene",Main_Menu)
