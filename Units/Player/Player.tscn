@@ -1,14 +1,117 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb57g0xho7c5t"]
+[gd_scene load_steps=34 format=3 uid="uid://bb57g0xho7c5t"]
 
 [ext_resource type="Script" path="res://Units/Player/Player.gd" id="1_0hdoe"]
 [ext_resource type="Resource" uid="uid://cj4g38i5dlfjg" path="res://Factions/mc.tres" id="2_eki41"]
-[ext_resource type="PackedScene" uid="uid://e4w873cvy2d" path="res://Units/Player/commander.tscn" id="2_pdday"]
+[ext_resource type="PackedScene" uid="uid://cj65ks7d6yj3s" path="res://Models/commander.glb" id="3_tho6i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_triqg"]
 height = 1.8
 
 [sub_resource type="Environment" id="Environment_5btf0"]
 ambient_light_color = Color(0.498039, 0.498039, 0.498039, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jtive"]
+animation = &"Death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8tsvt"]
+animation = &"Idle Quirk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x37kn"]
+animation = &"Combat Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7rppx"]
+animation = &"Jump End"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vd5do"]
+animation = &"Jump Mid"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k6qtm"]
+animation = &"Jump Start"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_38cfs"]
+animation = &"Melee"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s76o0"]
+animation = &"Shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oslku"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1h1ay"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_txugg"]
+advance_expression = "
+"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o6jjo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e0x6f"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aurxo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rm7lx"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vilxm"]
+advance_mode = 2
+advance_condition = &"grounded"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qa60l"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xp3ln"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nc8db"]
+advance_condition = &"not_grounded"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3i7o4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xnlr8"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_op1f4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wwdt5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2v3iq"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j5urm"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_plro2"]
+states/Death/node = SubResource("AnimationNodeAnimation_jtive")
+states/Death/position = Vector2(600.383, 174)
+states/End/position = Vector2(719.5, 65.25)
+states/Idle/node = SubResource("AnimationNodeAnimation_x37kn")
+states/Idle/position = Vector2(313, 65)
+"states/Idle Quirk/node" = SubResource("AnimationNodeAnimation_8tsvt")
+"states/Idle Quirk/position" = Vector2(312.312, -89.625)
+"states/Jump End/node" = SubResource("AnimationNodeAnimation_7rppx")
+"states/Jump End/position" = Vector2(457.5, 235.625)
+"states/Jump Mid/node" = SubResource("AnimationNodeAnimation_vd5do")
+"states/Jump Mid/position" = Vector2(327, 235.438)
+"states/Jump Start/node" = SubResource("AnimationNodeAnimation_k6qtm")
+"states/Jump Start/position" = Vector2(197, 234)
+states/Melee/node = SubResource("AnimationNodeAnimation_38cfs")
+states/Melee/position = Vector2(600.359, 10.5)
+states/Shoot/node = SubResource("AnimationNodeAnimation_s76o0")
+states/Shoot/position = Vector2(599.25, 90)
+states/Start/position = Vector2(155.5, 65.5)
+states/Walk/node = SubResource("AnimationNodeAnimation_oslku")
+states/Walk/position = Vector2(600.406, -84.25)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1h1ay"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_txugg"), "Idle", "Melee", SubResource("AnimationNodeStateMachineTransition_o6jjo"), "Idle", "Shoot", SubResource("AnimationNodeStateMachineTransition_e0x6f"), "Idle", "Jump Start", SubResource("AnimationNodeStateMachineTransition_aurxo"), "Idle", "Idle Quirk", SubResource("AnimationNodeStateMachineTransition_rm7lx"), "Jump Mid", "Jump End", SubResource("AnimationNodeStateMachineTransition_vilxm"), "Jump End", "Idle", SubResource("AnimationNodeStateMachineTransition_qa60l"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_xp3ln"), "Idle", "Jump Mid", SubResource("AnimationNodeStateMachineTransition_nc8db"), "Melee", "Idle", SubResource("AnimationNodeStateMachineTransition_3i7o4"), "Shoot", "Idle", SubResource("AnimationNodeStateMachineTransition_xnlr8"), "Idle Quirk", "Idle", SubResource("AnimationNodeStateMachineTransition_op1f4"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_wwdt5"), "Jump Start", "Jump Mid", SubResource("AnimationNodeStateMachineTransition_2v3iq"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_j5urm")]
+graph_offset = Vector2(-420, -154.264)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_pllyu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rba3d"]
 font_size = 50
@@ -45,8 +148,38 @@ transform = Transform3D(1, -4.39059e-16, 3.36903e-16, 3.19571e-16, 0.955129, 0.2
 cull_mask = 1048573
 environment = SubResource("Environment_5btf0")
 
-[node name="Commander" parent="." instance=ExtResource("2_pdday")]
+[node name="Commander" parent="." instance=ExtResource("3_tho6i")]
 unique_name_in_owner = true
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 2.08165e-12, 2.08165e-12, 0.125)
+
+[node name="Skeleton3D" parent="Commander/metarig" index="0"]
+bones/0/rotation = Quaternion(0.12582, 8.36239e-08, 1.06058e-08, 0.992053)
+bones/2/rotation = Quaternion(-0.0741145, -5.57137e-08, -2.0307e-08, 0.99725)
+bones/3/rotation = Quaternion(0.226584, -0.119395, -0.0082814, 0.966611)
+bones/4/rotation = Quaternion(0.197823, 9.61344e-08, 2.96481e-08, 0.980238)
+bones/5/rotation = Quaternion(-0.385242, -0.031226, 0.0494063, 0.920963)
+bones/7/rotation = Quaternion(-0.48217, -0.501083, -0.339948, 0.633138)
+bones/8/rotation = Quaternion(-0.51392, 0.366233, -0.4635, 0.622035)
+bones/10/rotation = Quaternion(0.0844695, -0.118164, -0.0655285, 0.987222)
+bones/11/rotation = Quaternion(-0.469315, 0.521096, 0.33397, 0.629815)
+bones/12/rotation = Quaternion(-0.210232, 0.228447, 0.805843, 0.504213)
+bones/13/rotation = Quaternion(0.177475, -0.215786, 0.0303577, 0.959697)
+bones/14/rotation = Quaternion(0.0293331, -0.0816145, 0.0891721, 0.992233)
+bones/19/rotation = Quaternion(0.870113, 0.0511043, -0.285754, 0.398291)
+bones/21/rotation = Quaternion(-0.781318, 2.94143e-07, -3.86906e-07, 0.624133)
+bones/26/rotation = Quaternion(-0.781318, 4.94848e-07, -4.57056e-07, 0.624133)
+
+[node name="Commander" parent="Commander/metarig/Skeleton3D" index="0"]
+layers = 4
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+unique_name_in_owner = true
+tree_root = SubResource("AnimationNodeStateMachine_plro2")
+anim_player = NodePath("../Commander/AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_pllyu")
+parameters/conditions/grounded = false
+parameters/conditions/not_grounded = false
 
 [node name="InteractionMarker" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -63,3 +196,7 @@ text = "Press E to interact"
 label_settings = SubResource("LabelSettings_rba3d")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_finished"]
+
+[editable path="Commander"]

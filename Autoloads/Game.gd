@@ -9,6 +9,8 @@ signal Exit			#Triggers closing the game
 @onready var CurrentScene = null
 var NextScene
 
+var player : Player = null
+
 var loader: = ResourceAsyncLoader.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -16,8 +18,6 @@ func _ready():
 	connect("Exit",Callable(self,"on_Exit"))
 	connect("ChangeScene",Callable(self,"on_ChangeScene"))
 	connect("Restart",Callable(self,"restart_scene"))
-	pass
-
 
 # we can add fade effects to this code later!
 func on_ChangeScene(scene) -> void:
@@ -34,7 +34,3 @@ func restart_scene()-> void:
 	
 func on_Exit()->void:
 	get_tree().quit()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

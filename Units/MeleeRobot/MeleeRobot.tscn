@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bggyx6ji0laf5"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="1_40i3q"]
 [ext_resource type="Script" path="res://Units/MeleeRobot/MeleeRobot.gd" id="1_of8jo"]

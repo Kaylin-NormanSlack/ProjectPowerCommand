@@ -1,0 +1,40 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dxdnnkta2vs07"
+path="res://.godot/imported/MC_WeakMinion.glb-9c52c8441d5fd98521d3a2d94f33d1e6.scn"
+
+[deps]
+
+source_file="res://Models/MC_WeakMinion.glb"
+dest_files=["res://.godot/imported/MC_WeakMinion.glb-9c52c8441d5fd98521d3a2d94f33d1e6.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+import_script/path=""
+_subresources={
+"nodes": {
+"PATH:Armature/Skeleton3D/Icosphere": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 3,
+"primitive/position": Vector3(2.08165e-12, 2, -0.1),
+"primitive/size": Vector3(2.5, 4, 3.5)
+}
+}
+}

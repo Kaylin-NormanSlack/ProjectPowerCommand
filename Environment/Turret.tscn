@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddr5fx3ixxab6"]
+
+[ext_resource type="PackedScene" uid="uid://c7xnwear1p1mo" path="res://Models/Turret.glb" id="1_2a5xg"]
+[ext_resource type="Script" path="res://Scripts/Interactable.gd" id="2_gejj2"]
+[ext_resource type="Script" path="res://Environment/Turret.gd" id="2_xqg75"]
+[ext_resource type="PackedScene" uid="uid://cinhwmw56emfp" path="res://Environment/TurretProjectile.tscn" id="3_f5jty"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_56v2w"]
+radius = 0.8
+height = 2.5
+
+[node name="Turret" instance=ExtResource("1_2a5xg")]
+script = ExtResource("2_xqg75")
+projectile = ExtResource("3_f5jty")
+
+[node name="Turret Body" parent="." index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[node name="Camera" type="Camera3D" parent="Turret Body" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0.49849, 1.76103, -3.27793e-12)
+cull_mask = 1048571
+
+[node name="Turret Gun" parent="Turret Body" index="1"]
+unique_name_in_owner = true
+
+[node name="Left Barrel Tip" type="Node3D" parent="Turret Body/Turret Gun/Left Barrel" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.222, -0.222)
+
+[node name="Right Barrel Tip" type="Node3D" parent="Turret Body/Turret Gun/Right Barrel" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.222, 0.222)
+
+[node name="AnimationPlayer" parent="." index="1"]
+unique_name_in_owner = true
+
+[node name="Interactable" type="Area3D" parent="." index="2"]
+unique_name_in_owner = true
+collision_layer = 9
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_gejj2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+shape = SubResource("CapsuleShape3D_56v2w")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interacted"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj31ke03phgdb"]
+
+[ext_resource type="PackedScene" uid="uid://dnorm0n3rulqn" path="res://Models/MC_CommonMinion.glb" id="1_0vmpu"]
+[ext_resource type="Script" path="res://Units/MC_CommonMinion/MC_CommonMinion.gd" id="2_ahw5s"]
+
+[node name="MC_CommonMinion" instance=ExtResource("1_0vmpu")]
+script = ExtResource("2_ahw5s")
+
+[node name="Armature" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 2.08165e-12)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/4/rotation = Quaternion(0.249691, -2.29308e-16, -1.88512e-08, 0.968326)
+bones/5/rotation = Quaternion(0.309053, 0.0225876, -0.374589, 0.873876)
+bones/6/rotation = Quaternion(-0.00426372, 0.293468, 0.282777, 0.913179)
+bones/9/rotation = Quaternion(-0.141295, -0.141295, 0.692846, 0.692846)
+bones/10/rotation = Quaternion(0.207336, -1.9293e-15, 1.56535e-08, 0.97827)
+bones/11/rotation = Quaternion(0.301442, 0.0103661, 0.52591, 0.795263)
+bones/12/rotation = Quaternion(0.737253, 0.134474, 0.052866, 0.659985)
+bones/13/rotation = Quaternion(-0.00179892, 0.00565672, 0.14653, 0.989188)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -2, 2.08165e-12)
+
+[node name="CollisionShape3D" parent="Armature/Skeleton3D/Cube" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 3, 2.08165e-12)

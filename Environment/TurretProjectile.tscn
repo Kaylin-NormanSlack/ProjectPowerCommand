@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cinhwmw56emfp"]
+
+[ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="1_nt7r0"]
+[ext_resource type="Script" path="res://Environment/TurretProjectile.gd" id="1_x7xj0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2xjp"]
+albedo_color = Color(0.537255, 0.52549, 0.0666667, 1)
+emission_enabled = true
+emission = Color(0.94902, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gu3n1"]
+material = SubResource("StandardMaterial3D_i2xjp")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_trx4v"]
+radius = 0.1
+
+[node name="TurretProjectile" type="AnimatableBody3D"]
+script = ExtResource("1_x7xj0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_gu3n1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_trx4v")
+
+[node name="Hitbox" type="Area3D" parent="."]
+monitorable = false
+script = ExtResource("1_nt7r0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("SphereShape3D_trx4v")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[connection signal="hit" from="Hitbox" to="." method="_on_hit"]
+[connection signal="timeout" from="LifeTimer" to="." method="queue_free"]

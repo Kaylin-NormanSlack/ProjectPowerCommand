@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://citb6n5t4qy2d"]
+[gd_scene load_steps=9 format=3 uid="uid://citb6n5t4qy2d"]
 
 [ext_resource type="PackedScene" uid="uid://1a1hob85f45c" path="res://Models/build_station.glb" id="1_ria42"]
 [ext_resource type="Script" path="res://Environment/BuildStation/BuildStation.gd" id="2_rkscp"]
 [ext_resource type="Script" path="res://Scripts/Interactable.gd" id="3_ro4if"]
+[ext_resource type="PackedScene" uid="uid://cnvxjp5gob5lw" path="res://Environment/BuildStation/BuildStationUI.tscn" id="4_eva6w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a33ta"]
 size = Vector3(1.47042, 0.154216, 2.65987)
@@ -81,5 +82,11 @@ script = ExtResource("3_ro4if")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35707, 0)
 shape = SubResource("CylinderShape3D_qc75a")
 
+[node name="BuildUI" parent="." index="6" instance=ExtResource("4_eva6w")]
+unique_name_in_owner = true
+visible = false
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="interacted" from="Interactable" to="." method="_on_interacted"]
+[connection signal="cancelled" from="BuildUI" to="." method="_on_build_ui_cancelled"]
+[connection signal="selected" from="BuildUI" to="." method="_on_build_ui_selected"]

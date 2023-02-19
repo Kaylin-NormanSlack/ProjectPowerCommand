@@ -18,7 +18,7 @@ OptionsScene = "res://UserInterface/MainMenuOptions.tscn"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -33,7 +33,6 @@ theme = SubResource("Theme_kg7lu")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "[center]Power Commander[/center]"
-fit_content_height = true
 scroll_active = false
 
 [node name="MainMenuBox" type="VBoxContainer" parent="."]

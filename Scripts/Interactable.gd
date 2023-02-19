@@ -1,6 +1,6 @@
 class_name Interactable extends Area3D
 
-signal interacted
+signal interacted(player: Player)
 
-func interact():
-	emit_signal("interacted")
+func interact(player: Player):
+	emit_signal("interacted", player)
